@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const Logo = () => {
-  return <img src="/logo.svg" alt="Logotipo UpTask Header" />;
+  return <Link to={'/'}> <img className="animate-pulse" src="/logo.svg" alt="Logotipo UpTask Header" /> </Link>;
 };
 
 export default Logo;
