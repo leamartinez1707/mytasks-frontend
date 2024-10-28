@@ -80,20 +80,20 @@ export const DashboardView = () => {
                     >
                       <Menu.Item>
                         <Link to={`/projects/${project._id}`}
-                          className='block px-3 py-1 text-sm leading-6 text-gray-900'>
+                          className='block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-100 w-full text-left'>
                           Ver Proyecto
                         </Link>
                       </Menu.Item>
                       <Menu.Item>
                         <Link to={`/projects/${project._id}/edit`}
-                          className='block px-3 py-1 text-sm leading-6 text-gray-900'>
+                          className='block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-100 w-full text-left'>
                           Editar Proyecto
                         </Link>
                       </Menu.Item>
                       <Menu.Item>
                         <button
                           type='button'
-                          className='block px-3 py-1 text-sm leading-6 text-red-500'
+                          className='block px-3 py-1 text-sm leading-6 text-red-500 hover:bg-gray-100 w-full text-left'
                           onClick={() => mutate(project._id)}
                         >
                           Eliminar Proyecto
