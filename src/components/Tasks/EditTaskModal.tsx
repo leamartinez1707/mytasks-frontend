@@ -36,6 +36,7 @@ const EditTaskModal = ({ data, taskId }: EditTaskModalProps) => {
         },
         onSuccess: (data) => {
             queryClient.invalidateQueries({ queryKey: ['editProject', projectId] });
+            queryClient.invalidateQueries({ queryKey: ['task', taskId] });
             toast.success(data);
             reset()
             navigate(location.pathname, {

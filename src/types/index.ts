@@ -7,7 +7,7 @@ export const projectSchema = z.object({
     projectName: z.string(),
     clientName: z.string(),
     description: z.string(),
-    tasks: z.string()
+    tasks: z.string(),
 })
 
 export const dashboardProjectSchema = z.array(
@@ -24,14 +24,16 @@ export type ProjectFormData = Pick<Project, 'clientName' | 'projectName' | 'desc
 // Tasks
 
 export const taskStatusSchema = z.enum(["pending", "onHold", "inProgress", "underReview", "completed"])
+export type TaskStatus = z.infer<typeof taskStatusSchema>
 
 export const taskSchema = z.object({
     _id: z.string(),
     name: z.string(),
-    projectName: z.string(),
     description: z.string(),
     project: z.string(),
-    status: taskStatusSchema
+    status: taskStatusSchema,
+    createdAt: z.string(),
+    updatedAt: z.string()
 })
 
 export type Task = z.infer<typeof taskSchema>
