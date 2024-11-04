@@ -4,6 +4,8 @@ import { DashboardView } from "@/views/Dashboard/DashboardView";
 import CreateProjectsView from "@/views/Dashboard/projects/CreateProjectsView";
 import EditProjectView from "@/views/Dashboard/projects/EditProjectView";
 import ProjectDetailView from "@/views/Dashboard/projects/ProjectDetailView";
+import AuthLayout from "@/layouts/AuthLayout";
+import LoginView from "@/views/Auth/LoginView";
 
 export const Router = () => {
   return (
@@ -14,6 +16,10 @@ export const Router = () => {
           <Route path="/projects/create" element={<CreateProjectsView />} />
           <Route path="/projects/:projectId/edit" element={<EditProjectView />} />
           <Route path="/projects/:projectId" element={<ProjectDetailView />} />
+        </Route>
+
+        <Route element={<AuthLayout />}>
+          <Route path="/auth/login" element={<LoginView />} />
         </Route>
       </Routes>
     </BrowserRouter>
