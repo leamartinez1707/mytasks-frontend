@@ -138,6 +138,9 @@ const RegisterView = () => {
             <nav className="mt-10 flex flex-col space-y-4">
                 <Link className="text-center text-gray-300 font-normal" to={"/auth/login"}>Ya tienes cuenta? Inicia sesion</Link>
             </nav>
+            <nav className="mt-10 flex flex-col space-y-4">
+                <Link className="text-center text-red-300 hover:text-red-500 font-normal" to={"/auth/forgot-password"}>¿Olvidaste tu contraseña?</Link>
+            </nav>
         </>
     )
 }
