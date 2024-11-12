@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 import { ForgotPasswordForm } from "../../types";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
+import { forgotPassword } from "@/api/authApi";
+import { toast } from "react-toastify";
 
 const ForgotPasswordView = () => {
     const initialValues: ForgotPasswordForm = {
@@ -9,7 +12,18 @@ const ForgotPasswordView = () => {
     }
     const { register, handleSubmit, reset, formState: { errors } } = useForm({ defaultValues: initialValues });
 
-    const handleForgotPassword = (formData: ForgotPasswordForm) => { }
+    const { mutate } = useMutation({
+        mutationFn: forgotPassword,
+        onError: (error) => {
+            toast.error(error.message);
+        },
+        onSuccess: (data) => {
+            toast(data)
+            reset()
+        }
+    });
+
+    const handleForgotPassword = (formData: ForgotPasswordForm) => mutate(formData);
 
 
     return (
