@@ -21,8 +21,7 @@ const LoginView = () => {
             toast.error(error.message)
         },
 
-        onSuccess: (data) => {
-            toast.success('Iniciando sesión..')
+        onSuccess: () => {
             navigate('/')
         }
     })

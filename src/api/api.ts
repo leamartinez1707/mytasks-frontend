@@ -14,6 +14,8 @@ export const createProject = async (formData: ProjectFormData) => {
     }
 }
 export const getProjects = async () => {
+    const token = localStorage.getItem('auth_token');
+    console.log(token);
     try {
         const { data } = await api('/projects')
         const response = dashboardProjectSchema.safeParse(data);

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-// Auth  && Users
+// Auth
 
 export const authSchema = z.object({
     name: z.string(),
@@ -16,12 +16,20 @@ export type UserRegisterForm = Pick<Auth, 'name' | 'email' | 'password' | 'passw
 export type RequestConfirmationCodeForm = Pick<Auth, 'email'>
 export type ForgotPasswordForm = Pick<Auth, 'email'>
 export type NewPasswordForm = Pick<Auth, 'password' | 'password_confirmation'>
-
-
-
 export type ConfirmToken = Pick<Auth, 'token'>
-// Projects
 
+
+// Users
+export const userSchema = authSchema.pick({
+    email: true,
+    name: true
+}).extend({
+    _id: z.string()
+})
+export type User = z.infer<typeof userSchema>
+
+
+// Projects
 export const projectSchema = z.object({
     _id: z.string(),
     projectName: z.string(),

@@ -11,6 +11,7 @@ import ConfirmAcountView from "@/views/Auth/ConfirmAcountView";
 import RequestNewCodeView from "@/views/Auth/RequestNewCodeView";
 import ForgotPasswordView from "@/views/Auth/ForgotPasswordView";
 import CreateNewPasswordView from "@/views/Auth/CreateNewPasswordView";
+import NotFoundView from "@/views/NotFoundView";
 
 export const Router = () => {
   return (
@@ -21,6 +22,7 @@ export const Router = () => {
           <Route path="/projects/create" element={<CreateProjectsView />} />
           <Route path="/projects/:projectId/edit" element={<EditProjectView />} />
           <Route path="/projects/:projectId" element={<ProjectDetailView />} />
+          <Route path="*" element={<NotFoundView />} />
         </Route>
 
         <Route element={<AuthLayout />}>
@@ -30,6 +32,7 @@ export const Router = () => {
           <Route path="/auth/request-code" element={<RequestNewCodeView />} />
           <Route path="/auth/forgot-password" element={<ForgotPasswordView />} />
           <Route path="/auth/new-password" element={<CreateNewPasswordView />} />
+          <Route path="*" element={<NotFoundView />} />
         </Route>
       </Routes>
     </BrowserRouter>
