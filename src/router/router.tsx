@@ -12,6 +12,7 @@ import RequestNewCodeView from "@/views/Auth/RequestNewCodeView";
 import ForgotPasswordView from "@/views/Auth/ForgotPasswordView";
 import CreateNewPasswordView from "@/views/Auth/CreateNewPasswordView";
 import NotFoundView from "@/views/NotFoundView";
+import ProjectTeamView from "../views/Dashboard/projects/ProjectTeamView";
 
 export const Router = () => {
   return (
@@ -22,6 +23,7 @@ export const Router = () => {
           <Route path="/projects/create" element={<CreateProjectsView />} />
           <Route path="/projects/:projectId/edit" element={<EditProjectView />} />
           <Route path="/projects/:projectId" element={<ProjectDetailView />} />
+          <Route path="/projects/:projectId/team" element={<ProjectTeamView />} />
           <Route path="*" element={<NotFoundView />} />
         </Route>
 
