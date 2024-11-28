@@ -66,3 +66,16 @@ export const taskSchema = z.object({
 
 export type Task = z.infer<typeof taskSchema>
 export type TaskFormData = Pick<Task, 'name' | 'description'>
+
+
+// Team
+
+const teamMemberSchema = userSchema.pick({
+    _id: true,
+    email: true,
+    name: true
+})
+
+export const teamMembersSchema = z.array(teamMemberSchema)
+export type TeamMember = z.infer<typeof teamMemberSchema>
+export type TeamMemberForm = Pick<TeamMember, 'email'>
