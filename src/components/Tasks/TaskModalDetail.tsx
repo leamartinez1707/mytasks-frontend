@@ -7,6 +7,7 @@ import { getTaskById, updateStatus } from '@/api/taskApi';
 import { formatDate } from '@/utils/utils';
 import { statusTranslation } from '@/locales/es';
 import { TaskStatus } from '@/types/index';
+import NotesPanel from '../Notes/NotesPanel';
 
 
 const TaskModalDetail = () => {
@@ -84,17 +85,19 @@ const TaskModalDetail = () => {
                                     >{data.name}
                                     </DialogTitle>
                                     <p className='text-lg text-slate-500 mb-2'>Descripción: {data.description}</p>
-
-                                    <p className='text-lg text-slate-500 mb-2'>Historial de cambios</p>
-                                    <ul className='list-decimal'>
-                                        {data.completedBy.map((activityLog) => (
-                                            <li key={activityLog._id} className='text-lg text-slate-500 font-bold mb-2'>
-                                                {statusTranslation[activityLog.status]}
-                                                <span>{' - '}{activityLog.user.name}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-
+                                    {data.completedBy.length ? (
+                                        <>
+                                            <p className='text-lg text-slate-500 font-semibold mb-2'>Historial de cambios</p>
+                                            <ul className='list-decimal'>
+                                                {data.completedBy.map((activityLog) => (
+                                                    <li key={activityLog._id} className='text-lg text-slate-500 mb-2'>
+                                                        {statusTranslation[activityLog.status]}
+                                                        <span>{' - '}{activityLog.user.name}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </>)
+                                        : null}
                                     <div className='my-5 space-y-3'>
                                         <label className='font-bold'>Estado Actual: </label>
                                         <select
@@ -106,6 +109,8 @@ const TaskModalDetail = () => {
                                             ))}
                                         </select>
                                     </div>
+
+                                    <NotesPanel />
                                 </DialogPanel>
                             </TransitionChild>
                         </div>
