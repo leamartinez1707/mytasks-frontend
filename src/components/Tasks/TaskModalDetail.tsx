@@ -18,6 +18,7 @@ const TaskModalDetail = () => {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
     const taskId = queryParams.get('viewTask')!
+
     const show = taskId ? true : false
 
     const { data, isError, error } = useQuery({
@@ -34,9 +35,9 @@ const TaskModalDetail = () => {
             toast.error(error.message)
         },
         onSuccess: (data) => {
-            queryClient.invalidateQueries({ queryKey: ['editProject', projectId] })
-            queryClient.invalidateQueries({ queryKey: ['task', taskId] })
             toast.success(data)
+            queryClient.invalidateQueries({ queryKey: ['project', projectId] })
+            queryClient.invalidateQueries({ queryKey: ['task', taskId] })
         }
     })
 
@@ -87,7 +88,8 @@ const TaskModalDetail = () => {
                                     <p className='text-lg text-slate-500 mb-2'>Descripción: {data.description}</p>
                                     {data.completedBy.length ? (
                                         <>
-                                            <p className='text-lg text-slate-500 font-semibold mb-2'>Historial de cambios</p>
+                                            <p className='font-bold text-2xl text-slate-600 my-5'>Historial de cambios</p>
+                                            <hr className='py-2' />
                                             <ul className='list-decimal'>
                                                 {data.completedBy.map((activityLog) => (
                                                     <li key={activityLog._id} className='text-lg text-slate-500 mb-2'>
@@ -103,14 +105,16 @@ const TaskModalDetail = () => {
                                         <select
                                             onChange={handleChange}
                                             defaultValue={data.status}
-                                            className='w-full bg-white border-gray-300'>
+                                            className='w-full bg-white border border-gray-300'>
                                             {Object.entries(statusTranslation).map(([key, value]) => (
                                                 <option key={key} value={key}>{value}</option>
                                             ))}
                                         </select>
                                     </div>
 
-                                    <NotesPanel />
+                                    <NotesPanel
+                                        notes={data.notes}
+                                    />
                                 </DialogPanel>
                             </TransitionChild>
                         </div>

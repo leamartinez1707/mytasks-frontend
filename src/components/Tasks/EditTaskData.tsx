@@ -13,6 +13,8 @@ const EditTaskData = () => {
     const queryParams = new URLSearchParams(location.search)
     const editTaskId = queryParams.get('editTask')
 
+    console.log(editTaskId)
+
     const { data, isError } = useQuery({
         queryKey: ['task', editTaskId!],
         queryFn: () => getTaskById({ taskId: editTaskId!, projectId: params.projectId! }),
@@ -20,6 +22,7 @@ const EditTaskData = () => {
         retry: false
 
     })
+    console.log(isError)
     if (isError) return <Navigate to="/404" />
     if (data) return <EditTaskModal data={data} taskId={editTaskId!} />
 }
