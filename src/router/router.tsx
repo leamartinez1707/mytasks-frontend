@@ -14,7 +14,7 @@ import CreateNewPasswordView from "@/views/Auth/CreateNewPasswordView";
 import NotFoundView from "@/views/NotFoundView";
 import ProjectTeamView from "../views/Dashboard/projects/ProjectTeamView";
 import ProfileView from "@/views/Profile/ProfileView";
-import ChangePassword from "@/views/Profile/ChangePassword";
+import ChangePassword from "@/views/Profile/ChangePasswordView";
 import ProfileLayout from "@/layouts/ProfileLayout";
 
 export const Router = () => {
