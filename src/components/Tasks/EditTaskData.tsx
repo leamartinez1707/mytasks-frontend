@@ -12,9 +12,6 @@ const EditTaskData = () => {
     // Query params para obtener el id de la tarea a editar desde la url, se obtiene con la key 'editTask'
     const queryParams = new URLSearchParams(location.search)
     const editTaskId = queryParams.get('editTask')
-
-    console.log(editTaskId)
-
     const { data, isError } = useQuery({
         queryKey: ['task', editTaskId!],
         queryFn: () => getTaskById({ taskId: editTaskId!, projectId: params.projectId! }),
@@ -22,7 +19,6 @@ const EditTaskData = () => {
         retry: false
 
     })
-    console.log(isError)
     if (isError) return <Navigate to="/404" />
     if (data) return <EditTaskModal data={data} taskId={editTaskId!} />
 }

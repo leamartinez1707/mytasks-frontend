@@ -16,7 +16,7 @@ export const createNote = async ({ projectId, taskId, formData }: Pick<NoteAPITy
         return data
     } catch (error) {
         if (isAxiosError(error) && error.response) {
-            throw new Error(error.response.data.message);
+            throw new Error(error.response.data.error);
         }
     }
 }
@@ -31,7 +31,7 @@ export const deleteNote = async ({ projectId, taskId, noteId }: Pick<NoteAPIType
     catch (error) {
         console.log(error)
         if (isAxiosError(error) && error.response) {
-            throw new Error(error.response.data.message);
+            throw new Error(error.response.data.error);
         }
     }
 
