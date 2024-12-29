@@ -31,9 +31,7 @@ export const Router = () => {
           <Route element={<ProfileLayout />} >
             <Route path="/profile" element={<ProfileView />} />
             <Route path="/profile/update-password" element={<ChangePassword />} />
-
           </Route>
-          <Route path="*" element={<NotFoundView />} />
         </Route>
 
         <Route element={<AuthLayout />}>
@@ -43,9 +41,12 @@ export const Router = () => {
           <Route path="/auth/request-code" element={<RequestNewCodeView />} />
           <Route path="/auth/forgot-password" element={<ForgotPasswordView />} />
           <Route path="/auth/new-password" element={<CreateNewPasswordView />} />
+        </Route>
+
+        <Route element={<AuthLayout />}>
           <Route path="*" element={<NotFoundView />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 };

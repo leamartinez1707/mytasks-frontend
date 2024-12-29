@@ -7,9 +7,6 @@ const CreateNewPasswordView = () => {
   const [token, setToken] = useState<ConfirmToken['token']>('')
   const [isValidToken, setIsValidToken] = useState(false)
 
-  const handleChange = (token: string) => { }
-  const handleComplete = (token: string) => { }
-
   return (
     <>
       <h1 className="text-5xl font-black text-white">Crear nueva contraseña</h1>
