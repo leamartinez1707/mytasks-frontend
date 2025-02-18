@@ -8,6 +8,9 @@ UpTask es una aplicación web diseñada para facilitar la gestión de proyectos,
 
 [UpTask - Ir a la web](https://uptask-projectmanagement-phi.vercel.app/)
 
+## Importante
+
+La base de datos está alojada en un servidor gratis, por lo que la primera interacción puede demorar hasta 50 segundos en cargar. Esto se debe a que Render habilita el servidor en los próximos 20-50 segundos luego de escuchar la primera petición hacía la base de datos.
 
 ## Screenshots
 
